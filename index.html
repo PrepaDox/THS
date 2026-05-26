@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="prepaDox ,prepa dox , document prepa, archive prepa, prepa archive , ">
 <title>PrepaDox — Bibliothèque Numérique</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -276,40 +275,6 @@
     display: block;
   }
 
-  .search-row {
-    display: flex;
-    border: 1.5px solid var(--ink);
-    background: var(--paper);
-    margin-bottom: 2rem;
-  }
-
-  .search-row input {
-    flex: 1;
-    padding: 0.9rem 1.2rem;
-    border: none;
-    background: transparent;
-    font-family: var(--body);
-    font-size: 1rem;
-    color: var(--ink);
-    outline: none;
-  }
-
-  .search-row input::placeholder { color: var(--muted); font-style: italic; }
-
-  .search-row button {
-    padding: 0 1.4rem;
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background .2s;
-  }
-
-  .search-row button:hover { background: var(--amber); }
 
   /* ─── SECTION DIVIDER ─── */
   .section-header {
@@ -959,10 +924,6 @@
   </div>
   <div class="hero-divider"></div>
   <div class="hero-right">
-    <div class="search-row">
-      <input type="text" id="searchInput" placeholder="Chercher un cours, une annale…" oninput="handleSearch(this.value)">
-      <button onclick="handleSearch(document.getElementById('searchInput').value)">Chercher</button>
-    </div>
     <div class="stats-row">
       <div class="stat-cell">
         <span class="stat-num" id="stat-docs">0</span>
@@ -1133,7 +1094,7 @@ const HEADERS = {
 
 // ─── STATE ───
 let docs = [];
-let currentFilter = { subject: 'all', type: 'all', search: '' };
+let currentFilter = { subject: 'all', type: 'all' };
 
 // ─── LOAD from Supabase ───
 async function loadDocs() {
@@ -1144,8 +1105,8 @@ async function loadDocs() {
       id: d.id,
       title: d.title,
       url: d.url,
-      subject: d.subject,
-      type: d.type,
+      subject: (d.subject || '').trim(),
+      type: (d.type || '').trim(),
       docClass: d.doc_class,
       year: d.year,
       desc: d.description
@@ -1156,11 +1117,9 @@ async function loadDocs() {
 // ─── RENDER ───
 function getFilteredDocs() {
   return docs.filter(d => {
-    const matchSubject = currentFilter.subject === 'all' || d.subject === currentFilter.subject;
+    const matchSubject = currentFilter.subject === 'all' || (d.subject || '').trim() === currentFilter.subject.trim();
     const matchType = currentFilter.type === 'all' || d.type === currentFilter.type;
-    const q = currentFilter.search.toLowerCase();
-    const matchSearch = !q || d.title.toLowerCase().includes(q) || (d.subject||'').toLowerCase().includes(q) || (d.type||'').toLowerCase().includes(q);
-    return matchSubject && matchType && matchSearch;
+    return matchSubject && matchType;
   });
 }
 
@@ -1221,10 +1180,6 @@ function filterType(type, btn) {
   render();
 }
 
-function handleSearch(val) {
-  currentFilter.search = val;
-  render();
-}
 
 
 // ─── ADMIN ───
