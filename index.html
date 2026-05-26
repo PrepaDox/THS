@@ -546,78 +546,7 @@
     color: rgba(245,240,232,0.4);
   }
 
-  /* ─── PDF VIEWER MODAL ─── */
-  .viewer-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,10,15,0.92);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn .25s ease;
-  }
 
-  .viewer-overlay.open { display: flex; }
-
-  @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
-
-  .viewer-box {
-    width: 92vw;
-    height: 92vh;
-    background: var(--paper);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    border: 2px solid var(--ink);
-    animation: slideUp .3s ease;
-  }
-
-  @keyframes slideUp { from { transform: translateY(30px); opacity:0; } to { transform:none; opacity:1; } }
-
-  .viewer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 1.5rem;
-    border-bottom: 1.5px solid var(--ink);
-    background: var(--cream);
-    flex-shrink: 0;
-  }
-
-  .viewer-title {
-    font-family: var(--serif);
-    font-size: 1rem;
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 70%;
-  }
-
-  .viewer-close {
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    width: 34px;
-    height: 34px;
-    cursor: pointer;
-    font-family: var(--mono);
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background .2s;
-    flex-shrink: 0;
-  }
-
-  .viewer-close:hover { background: var(--rust); }
-
-  .viewer-iframe {
-    flex: 1;
-    width: 100%;
-    border: none;
-  }
 
   /* ─── ADMIN PANEL ─── */
   .admin-overlay {
@@ -1081,22 +1010,9 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="f-logo">Prepa<em>Dox</em></div>
-  <div class="f-copy">© 2025 Prepa Dox — Bibliothèque numérique libre</div>
+  <div class="f-copy">© 2025 PrepaDox — Bibliothèque numérique libre</div>
 </footer>
 
-<!-- ─── PDF VIEWER ─── -->
-<div class="viewer-overlay" id="viewerOverlay">
-  <div class="viewer-box">
-    <div class="viewer-header">
-      <div class="viewer-title" id="viewerTitle">Document</div>
-      <div style="display:flex;gap:0.6rem;align-items:center;flex-shrink:0">
-        <a id="viewerExternalLink" href="#" target="_blank" rel="noopener" style="background:var(--amber);color:var(--ink);border:none;padding:0.4rem 0.9rem;font-family:var(--mono);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:0.4rem;">Ouvrir ↗</a>
-        <button class="viewer-close" onclick="closeViewer()">✕</button>
-      </div>
-    </div>
-    <iframe class="viewer-iframe" id="viewerFrame" src="" allowfullscreen></iframe>
-  </div>
-</div>
 
 <!-- ─── ADMIN PANEL ─── -->
 <div class="admin-overlay" id="adminOverlay">
@@ -1106,7 +1022,7 @@
         <div class="admin-dot dot-red"></div>
         <div class="admin-dot dot-yellow"></div>
         <div class="admin-dot dot-green"></div>
-        <div class="admin-topbar-title">Admin Terminal — ArchivePrepa</div>
+        <div class="admin-topbar-title">Admin Terminal — PrepaDox</div>
       </div>
       <button class="admin-close-btn" onclick="closeAdmin()">✕</button>
     </div>
@@ -1273,7 +1189,7 @@ function render() {
         ${d.year ? `<span>${d.year}</span>` : ''}
       </div>
       ${d.desc ? `<div class="doc-desc">${escapeHtml(d.desc)}</div>` : ''}
-      <button class="doc-open-btn" onclick="openViewer('${encodeURIComponent(d.url)}','${encodeURIComponent(d.title)}')">
+      <button class="doc-open-btn" onclick="window.open('${d.url}', '_blank', 'noopener')">
         Consulter
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M2 10L10 2M10 2H5M10 2V7"/>
@@ -1309,22 +1225,6 @@ function handleSearch(val) {
   render();
 }
 
-// ─── VIEWER ───
-function openViewer(encodedUrl, encodedTitle) {
-  const url = decodeURIComponent(encodedUrl);
-  const title = decodeURIComponent(encodedTitle);
-  document.getElementById('viewerFrame').src = url;
-  document.getElementById('viewerTitle').textContent = title;
-  document.getElementById('viewerExternalLink').href = url;
-  document.getElementById('viewerOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeViewer() {
-  document.getElementById('viewerOverlay').classList.remove('open');
-  document.getElementById('viewerFrame').src = '';
-  document.body.style.overflow = '';
-}
 
 // ─── ADMIN ───
 let adminUnlocked = false;
