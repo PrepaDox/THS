@@ -1117,7 +1117,7 @@ async function loadDocs() {
 // ─── RENDER ───
 function getFilteredDocs() {
   return docs.filter(d => {
-    const matchSubject = currentFilter.subject === 'all' || (d.subject || '').trim() === currentFilter.subject.trim();
+    const matchSubject = currentFilter.subject === 'all' || (d.subject || '').trim().toLowerCase() === currentFilter.subject.trim().toLowerCase();
     const matchType = currentFilter.type === 'all' || d.type === currentFilter.type;
     return matchSubject && matchType;
   });
@@ -1166,11 +1166,12 @@ function escapeHtml(s) {
 // ─── FILTERS ───
 function filterDocs(subject) {
   currentFilter.subject = subject;
-  // update nav
   document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
   const map = {all:'nav-all','Mathématiques':'nav-math','Physique':'nav-phys','Chimie':'nav-chem','Informatique':'nav-info','Français':'nav-fr','Anglais':'nav-en'};
   if (map[subject]) document.getElementById(map[subject])?.classList.add('active');
   render();
+  // Debug: log what subjects exist in loaded docs
+  console.log('Filter:', subject, '| Docs subjects:', docs.map(d => d.subject));
 }
 
 function filterType(type, btn) {
