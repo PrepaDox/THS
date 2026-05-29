@@ -36,7 +36,7 @@
     cursor: default;
   }
 
-  /* ─── GRAIN OVERLAY ─── */
+  
   body::before {
     content:'';
     position:fixed;
@@ -46,10 +46,7 @@
     opacity:.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-size: 150px;
-  }
-
-  /* ─── HEADER ─── */
-  header {
+  }header {
     position: relative;
     padding: 2.5rem 6vw 0;
     border-bottom: 2px solid var(--ink);
@@ -149,8 +146,6 @@
   .header-nav a:hover::after { transform: scaleX(1); }
   .header-nav a.active { color: var(--amber); }
   .header-nav a.active::after { transform: scaleX(1); }
-
-  /* ─── TICKER ─── */
   .ticker-wrap {
     background: var(--ink);
     color: var(--paper);
@@ -175,8 +170,6 @@
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-
-  /* ─── HERO SECTION ─── */
   .hero {
     display: grid;
     grid-template-columns: 1fr 2px 1fr;
@@ -274,9 +267,6 @@
     margin-top: 0.3rem;
     display: block;
   }
-
-
-  /* ─── SECTION DIVIDER ─── */
   .section-header {
     display: flex;
     align-items: center;
@@ -308,7 +298,6 @@
     letter-spacing: 0.15em;
   }
 
-  /* ─── FILTERS ─── */
   .filters {
     padding: 1.2rem 6vw;
     border-bottom: 1px solid var(--line);
@@ -345,8 +334,6 @@
     color: var(--paper);
     border-color: var(--ink);
   }
-
-  /* ─── ARCHIVE GRID ─── */
   #archive {
     padding: 2rem 6vw 5rem;
   }
@@ -481,8 +468,7 @@
     font-size: 1.3rem;
     color: var(--muted);
   }
-
-  /* ─── FOOTER ─── */
+  /* css dl9lawi */
   footer {
     border-top: 2px solid var(--ink);
     padding: 2.5rem 6vw;
@@ -514,7 +500,7 @@
 
 
 
-  /* ─── ADMIN PANEL ─── */
+  /* nodh al 9lawi nodh random shit at 00:07 */
   .admin-overlay {
     display: none;
     position: fixed;
@@ -652,7 +638,7 @@
     min-height: 1em;
   }
 
-  /* Admin dashboard */
+  
   .admin-dashboard {
     display: none;
     flex-direction: column;
@@ -693,7 +679,7 @@
     flex: 1;
   }
 
-  /* Upload form */
+  
   .upload-form {
     display: flex;
     flex-direction: column;
@@ -763,7 +749,7 @@
     min-height: 1em;
   }
 
-  /* Doc list in admin */
+  
   .admin-doc-list {
     display: flex;
     flex-direction: column;
@@ -826,7 +812,6 @@
     letter-spacing: 0.1em;
   }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; }
     .hero-divider { display: none; }
@@ -836,7 +821,6 @@
     footer { flex-direction: column; text-align: center; }
   }
 
-  /* ─── ANIMATIONS ─── */
   .doc-card {
     opacity: 0;
     transform: translateY(12px);
@@ -857,15 +841,12 @@
   .doc-card:nth-child(8) { animation-delay:.4s }
 
   .highlight { background: rgba(200,146,42,0.2); }
-
-  /* Tab panels */
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
 </style>
 </head>
 <body>
 
-<!-- ─── HEADER ─── -->
 <header>
   <div class="header-top">
     <div class="header-meta">
@@ -895,7 +876,7 @@
   </nav>
 </header>
 
-<!-- ─── TICKER ─── -->
+
 <div class="ticker-wrap">
   <div class="ticker-inner">
     <span>Annales MPSI 2024</span>
@@ -912,8 +893,6 @@
     <span>Analyse Numérique — PCSI</span>
   </div>
 </div>
-
-<!-- ─── HERO ─── -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-kicker">◆ Ressources académiques</div>
@@ -944,8 +923,6 @@
     </div>
   </div>
 </section>
-
-<!-- ─── ARCHIVE ─── -->
 <div class="section-header">
   <h2>Archive <em>complète</em></h2>
   <div class="section-rule"></div>
@@ -968,15 +945,10 @@
     </div>
   </div>
 </section>
-
-<!-- ─── FOOTER ─── -->
 <footer>
   <div class="f-logo">Prepa<em>Dox</em></div>
   <div class="f-copy">© 2025 PrepaDox — <a href="https://www.instagram.com/milarep1?igsh=MW1ubXk0NjcxZGUybg==">contact</a></div>
 </footer>
-
-
-<!-- ─── ADMIN PANEL ─── -->
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-box">
     <div class="admin-topbar">
@@ -989,7 +961,7 @@
       <button class="admin-close-btn" onclick="closeAdmin()">✕</button>
     </div>
 
-    <!-- Login -->
+    <!-- 3andek concours 3am jey 3andek concours 3am jey 3andek concour 3am jey oiiiiii-->
     <div id="adminLogin" class="admin-login">
       <div class="admin-login-title">// Accès sécurisé requis</div>
       <div class="field-group">
@@ -999,15 +971,13 @@
       <div class="admin-error" id="loginError"></div>
       <button class="admin-login-btn" onclick="tryLogin()">Authentifier →</button>
     </div>
-
-    <!-- Dashboard -->
     <div id="adminDash" class="admin-dashboard">
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchTab('upload', this)">Ajouter un document</button>
         <button class="admin-tab" onclick="switchTab('list', this)">Gérer les documents</button>
       </div>
       <div class="admin-content">
-        <!-- Upload tab -->
+      
         <div class="tab-panel active" id="tab-upload">
           <div class="upload-form">
             <div class="field-group">
@@ -1082,7 +1052,7 @@
 </div>
 
 <script>
-// ─── SUPABASE CONFIG ───
+
 const SUPABASE_URL = 'https://vnqytabkqalthwshqzlz.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZucXl0YWJrcWFsdGh3c2hxemx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk4MDQ1NzIsImV4cCI6MjA5NTM4MDU3Mn0.7eLYiWDmTd0vkadiU15VxGMHdUnAIWx8dCdyOC2Ag2o';
 const API = SUPABASE_URL + '/rest/v1/documents';
@@ -1091,12 +1061,9 @@ const HEADERS = {
   'apikey': SUPABASE_KEY,
   'Authorization': 'Bearer ' + SUPABASE_KEY
 };
-
-// ─── STATE ───
 let docs = [];
 let currentFilter = { subject: 'all', type: 'all' };
 
-// ─── LOAD from Supabase ───
 async function loadDocs() {
   try {
     const res = await fetch(API + '?order=created_at.desc', { headers: HEADERS });
@@ -1113,8 +1080,6 @@ async function loadDocs() {
     }));
   } catch(e) { docs = []; }
 }
-
-// ─── RENDER ───
 function getFilteredDocs() {
   return docs.filter(d => {
     const matchSubject = currentFilter.subject === 'all' || (d.subject || '').trim().toLowerCase() === currentFilter.subject.trim().toLowerCase();
@@ -1129,7 +1094,6 @@ function render() {
   const countEl = document.getElementById('doc-count');
   countEl.textContent = filtered.length + ' document' + (filtered.length !== 1 ? 's' : '');
 
-  // stats
   const subjects = new Set(docs.map(d => d.subject)).size;
   document.getElementById('stat-docs').textContent = docs.length;
   document.getElementById('stat-subjects').textContent = subjects;
@@ -1162,15 +1126,12 @@ function render() {
 function escapeHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
-// ─── FILTERS ───
 function filterDocs(subject) {
   currentFilter.subject = subject;
   document.querySelectorAll('.header-nav a').forEach(a => a.classList.remove('active'));
   const map = {all:'nav-all','Mathématiques':'nav-math','Physique':'nav-phys','Chimie':'nav-chem','Informatique':'nav-info','Français':'nav-fr','Anglais':'nav-en'};
   if (map[subject]) document.getElementById(map[subject])?.classList.add('active');
   render();
-  // Debug: log what subjects exist in loaded docs
   console.log('Filter:', subject, '| Docs subjects:', docs.map(d => d.subject));
 }
 
@@ -1181,9 +1142,6 @@ function filterType(type, btn) {
   render();
 }
 
-
-
-// ─── ADMIN ───
 let adminUnlocked = false;
 const ADMIN_PASS = 'PD456dza@C_d';
 
@@ -1233,9 +1191,7 @@ function tryLogin() {
     document.getElementById('adminPass').value = '';
     document.getElementById('adminPass').focus();
   }
-}
-
-// ─── ADMIN TABS ───
+ //wlh rabi la3ad fehem hatachy
 function switchTab(name, btn) {
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1244,7 +1200,6 @@ function switchTab(name, btn) {
   if (name === 'list') renderAdminList();
 }
 
-// ─── ADD DOCUMENT ───
 async function addDocument() {
   const title = document.getElementById('docTitle').value.trim();
   const url = document.getElementById('docUrl').value.trim();
@@ -1285,7 +1240,6 @@ async function addDocument() {
   }
 }
 
-// ─── ADMIN DOC LIST ───
 function renderAdminList() {
   const el = document.getElementById('adminDocList');
   if (docs.length === 0) {
@@ -1313,15 +1267,22 @@ async function deleteDoc(id) {
     alert('Erreur lors de la suppression.');
   }
 }
+//gj ez gg kmel
 
-// ─── LIVE DATE ───
 function updateDate() {
   const now = new Date();
   const opts = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
   document.getElementById('live-date').textContent = now.toLocaleDateString('fr-FR', opts);
 }
 
-// ─── INIT ───
+//el hasel ,el ay wehed ya9ra rabi maak w rabi ynajhek kamel fli taamal fih w b9odrt rabi labess , ma tasma3ch klem el ness kol w me tekhouch kol chy ala ases
+  /*
+  personal attack le, hawel tra chnow el bachar eli na9dek chef  ml pov mte3ou , kenha haja valide alech le enti ma tsalahch sinon ab3atha b lefta (el khodhra),
+  mntswrch ken fma chkoun bch ya9ra el klem hedha kol , ema el but ml site hedha ennou nkhaliw el ta3lim haja totalement gratuite , alech ykoun ensen andou lha9 ya9ra
+  w ensen ekher le , anyways shoutout el grp wiseprepa eli acceptew el post eli tpromoti lel site hedha , mch kima barcha hachekom "ta7ana" ba3thou fekrti tnayk bch 
+  ykamlou ybi3ou el docs mte3hom w ykdhbou 3al 3bed , el arze9 3and rabi mafama had bch yfoklk rez9k mch ki dra chnia taamel fl denia , nchlh generation jeya tkoun more rebellious in a 
+  good manner to enhance the countries quality of living 
+  */
 (async () => {
   await loadDocs();
   render();
